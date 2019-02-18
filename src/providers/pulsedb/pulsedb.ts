@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import * as firebase from 'firebase';
 /*
   Generated class for the PulsedbProvider provider.
 
@@ -10,8 +9,15 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class PulsedbProvider {
 
-  constructor(public http: HttpClient) {
+  constructor() {
     console.log('Hello PulsedbProvider Provider');
   }
 
+  register(email: string, password: string){
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
+  }
+
+  login(email: string, password: string){
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
+  }
 }
