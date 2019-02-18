@@ -1,0 +1,28 @@
+<ion-content>
+
+  <div class="hero">
+    <div class="hero__headingcontainer">
+        <h3 class="hero__headingcontainer--header">Chat</h3>
+    </div>
+  </div>
+
+
+  <div class="messages">
+    <div class="chatBubble" *ngFor="let x of arrMssg">
+      <div class="chat-bubble {{x.condition}}">
+        <div class="message">{{x.message}}</div>
+        <div class="message-detail">
+          <span style="font-weight:bold;">{{x.name}} </span>,
+          <span>{{x.time}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button ion-button icon-only *ngIf="messagestate != 'sending'" class="comment" (click)="messagestate = 'sending'">
+    <ion-icon name="chatbubbles"></ion-icon>
+  </button>
+
+  <chatbox (messageCreate)="onMessageAdded($event)" *ngIf="messagestate == 'sending'"></chatbox>
+
+</ion-content>
